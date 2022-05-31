@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
+if (TARGET zlib)
+    return()
+endif ()
+
 project(zlib LANGUAGES C VERSION 1.2.12)
 
 set(VERSION "1.2.12")
