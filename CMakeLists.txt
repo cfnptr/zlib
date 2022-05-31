@@ -1,11 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
-if (TARGET zlib)
-    return()
+if (NOT TARGET zlibstatic)
+    project(zlib LANGUAGES C VERSION 1.2.12)
 endif ()
-
-project(zlib LANGUAGES C VERSION 1.2.12)
 
 set(VERSION "1.2.12")
 
@@ -88,6 +86,10 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
 configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
 		${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
+
+if (TARGET zlibstatic)
+    return()
+endif ()
 
 
 #============================================================================
